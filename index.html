@@ -1,0 +1,3320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SpikeSafe Lanka - Sri Lanka's premier drink spiking awareness and prevention platform. Anonymous reporting, research database, and safety resources.">
+    <meta name="keywords" content="drink spiking, Sri Lanka, safety, prevention, awareness, nightlife safety">
+    <meta name="author" content="SpikeSafe Lanka">
+    <meta name="theme-color" content="#1A237E">
+    
+    <title>SpikeSafe Lanka | Drink Spiking Prevention & Awareness - Sri Lanka</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <style>
+        /* Design System & CSS Variables */
+        :root {
+            /* Sri Lanka Themed Colors */
+            --primary: #FF6B35; /* Deep Orange */
+            --primary-light: #FF8C61;
+            --primary-dark: #E55A2B;
+            --secondary: #4CAF50; /* Sri Lankan Green */
+            --secondary-light: #66BB6A;
+            --secondary-dark: #388E3C;
+            --accent: #FFD700; /* Golden Yellow */
+            
+            /* Neutral Colors */
+            --dark: #0D1B2A;
+            --dark-light: #1B263B;
+            --gray-900: #1A1A2E;
+            --gray-700: #16213E;
+            --gray-500: #4A5568;
+            --gray-300: #A0AEC0;
+            --gray-100: #E2E8F0;
+            --light: #F7FAFC;
+            --white: #FFFFFF;
+            
+            /* Semantic Colors */
+            --danger: #E53E3E;
+            --danger-light: #FC8181;
+            --warning: #D69E2E;
+            --success: #38A169;
+            --info: #3182CE;
+            
+            /* Typography */
+            --font-primary: 'Inter', 'Noto Sans Sinhala', 'Noto Sans Tamil', sans-serif;
+            --font-sinhala: 'Noto Sans Sinhala', sans-serif;
+            --font-tamil: 'Noto Sans Tamil', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-glow: 0 0 20px rgba(255, 107, 53, 0.3);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-base: 300ms ease-in-out;
+            --transition-slow: 500ms ease-in-out;
+            
+            /* Z-index Scale */
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-modal: 300;
+            --z-tooltip: 400;
+            --z-toast: 500;
+        }
+
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Accessibility: Skip to main content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 var(--radius-md) 0;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Focus styles for accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+            color: var(--dark);
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+        h4 { font-size: 1.25rem; }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-500);
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--dark);
+            border-color: var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: var(--white);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: var(--z-sticky);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-base);
+        }
+
+        header.scrolled {
+            background: rgba(13, 27, 42, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .logo-text small {
+            display: block;
+            color: var(--gray-300);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-xs);
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-100);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .nav-links .btn {
+            margin-left: var(--space-md);
+        }
+
+        .language-selector {
+            position: relative;
+            margin-left: var(--space-md);
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: var(--space-sm);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all var(--transition-fast);
+            z-index: var(--z-dropdown);
+        }
+
+        .language-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-dropdown button {
+            width: 100%;
+            padding: var(--space-md);
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9375rem;
+            color: var(--dark);
+            transition: background var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .language-dropdown button:first-child {
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        .language-dropdown button:last-child {
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+        }
+
+        .language-dropdown button:hover {
+            background: var(--gray-100);
+        }
+
+        .language-dropdown button.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            transition: background var(--transition-fast);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 50%, var(--gray-900) 100%);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF6B35' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: var(--primary-light);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h2 {
+            color: var(--white);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero h2 span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero-description {
+            color: var(--gray-300);
+            font-size: 1.125rem;
+            margin-bottom: var(--space-xl);
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: var(--space-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-300);
+            margin-top: var(--space-xs);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sri-lanka-map-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+        }
+
+        .map-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .sri-lanka-outline {
+            position: absolute;
+            inset: 10%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            box-shadow: var(--shadow-xl), inset 0 0 60px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            75% { border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; }
+        }
+
+        .location-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .marker-pulse {
+            width: 20px;
+            height: 20px;
+            background: var(--danger);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .marker-pulse::before,
+        .marker-pulse::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--danger);
+            border-radius: 50%;
+            animation: ripple 2s ease-out infinite;
+        }
+
+        .marker-pulse::after {
+            animation-delay: 1s;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .marker-label {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            color: var(--dark);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: var(--shadow-md);
+        }
+
+        .colombo { top: 45%; left: 40%; }
+        .kandy { top: 55%; left: 55%; }
+        .galle { top: 75%; left: 45%; }
+        .jaffna { top: 15%; left: 35%; }
+
+        .emergency-card {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--danger) 0%, #C53030 100%);
+            color: var(--white);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            min-width: 280px;
+            z-index: 10;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .emergency-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            5%, 15% { transform: rotate(-10deg); }
+            10%, 20% { transform: rotate(10deg); }
+            25% { transform: rotate(0deg); }
+        }
+
+        .emergency-info h3 {
+            color: var(--white);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .emergency-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            display: block;
+            line-height: 1;
+        }
+
+        .emergency-info small {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+        }
+
+        /* Quick Actions Bar */
+        .quick-actions {
+            background: var(--white);
+            padding: var(--space-lg) 0;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .quick-action-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--light);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .quick-action-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quick-action-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .quick-action-card:nth-child(1) .quick-action-icon { background: rgba(255, 107, 53, 0.1); color: var(--primary); }
+        .quick-action-card:nth-child(2) .quick-action-icon { background: rgba(56, 161, 105, 0.1); color: var(--success); }
+        .quick-action-card:nth-child(3) .quick-action-icon { background: rgba(49, 130, 206, 0.1); color: var(--info); }
+        .quick-action-card:nth-child(4) .quick-action-icon { background: rgba(214, 158, 46, 0.1); color: var(--warning); }
+
+        .quick-action-text h4 {
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+        }
+
+        .quick-action-text p {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .section-title {
+            margin-bottom: var(--space-md);
+        }
+
+        .section-subtitle {
+            color: var(--gray-500);
+            font-size: 1.125rem;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background: var(--white);
+        }
+
+        .resources-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: var(--space-md) var(--space-md) var(--space-md) 3rem;
+            border: 2px solid var(--gray-100);
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            background: var(--light);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            padding: var(--space-sm) var(--space-md);
+            border: 2px solid var(--gray-100);
+            background: var(--white);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .filter-chip:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .filter-chip.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .resource-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .resource-type-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: var(--white);
+            color: var(--dark);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .resource-srilanka-badge {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            background: rgba(255, 215, 0, 0.9);
+            color: var(--dark);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .resource-content {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .resource-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .resource-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .resource-description {
+            color: var(--gray-500);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            flex: 1;
+        }
+
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--gray-500);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .resource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .resource-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Research Section */
+        .research-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .research-table-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .research-table th {
+            background: var(--dark);
+            color: var(--white);
+            padding: var(--space-md) var(--space-lg);
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .research-table td {
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .research-table tbody tr {
+            transition: background var(--transition-fast);
+        }
+
+        .research-table tbody tr:hover {
+            background: var(--light);
+        }
+
+        .research-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .paper-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: var(--space-xs);
+        }
+
+        .paper-authors {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .type-journal { background: rgba(49, 130, 206, 0.1); color: var(--info); }
+        .type-report { background: rgba(214, 158, 46, 0.1); color: var(--warning); }
+        .type-thesis { background: rgba(128, 90, 213, 0.1); color: #805AD5; }
+
+        .keyword-tag {
+            display: inline-block;
+            background: var(--light);
+            color: var(--gray-500);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            margin: 2px;
+        }
+
+        /* Report Section */
+        .report-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .report-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FF6B35' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .report-section .section-title,
+        .report-section .section-subtitle {
+            color: var(--white);
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--space-3xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .report-form-wrapper {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+            font-size: 0.9375rem;
+        }
+
+        .form-group label .required {
+            color: var(--danger);
+            margin-left: var(--space-xs);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--gray-100);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all var(--transition-fast);
+            background: var(--light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--light);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 2px solid transparent;
+        }
+
+        .checkbox-label:hover {
+            border-color: var(--primary);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+        }
+
+        .privacy-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: var(--space-xl);
+        }
+
+        .privacy-card h3 {
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .privacy-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        .emergency-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all var(--transition-fast);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+        }
+
+        .contact-info h4 {
+            color: var(--white);
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .contact-info p {
+            color: var(--primary-light);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-content > p {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-xl);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: var(--space-xl);
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            padding: var(--space-md);
+            background: var(--light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .feature-list i {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-top: 2px;
+        }
+
+        .feature-list h4 {
+            margin-bottom: var(--space-xs);
+            font-size: 1rem;
+        }
+
+        .feature-list p {
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .stat-card-large {
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            text-align: center;
+            border: 2px solid var(--gray-100);
+            transition: all var(--transition-base);
+        }
+
+        .stat-card-large:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon-large {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            color: var(--white);
+            font-size: 1.75rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-label {
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding-top: var(--space-3xl);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand p {
+            color: var(--gray-300);
+            margin-bottom: var(--space-lg);
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: var(--space-lg);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-links a {
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--gray-300);
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-lg) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer-bottom p {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .footer-partners {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .partner-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            color: var(--gray-300);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: var(--z-modal);
+            padding: var(--space-lg);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin: 0;
+            padding-right: var(--space-xl);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-500);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            background: var(--light);
+            color: var(--danger);
+        }
+
+        .modal-body {
+            padding: var(--space-xl);
+        }
+
+        .modal-footer {
+            padding: var(--space-xl);
+            border-top: 1px solid var(--gray-100);
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-md);
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            z-index: var(--z-toast);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .toast {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            min-width: 300px;
+            max-width: 400px;
+            animation: toastSlideIn 0.3s ease-out;
+            border-left: 4px solid var(--primary);
+        }
+
+        @keyframes toastSlideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success { border-left-color: var(--success); }
+        .toast.error { border-left-color: var(--danger); }
+        .toast.warning { border-left-color: var(--warning); }
+
+        .toast-icon {
+            font-size: 1.25rem;
+        }
+
+        .toast.success .toast-icon { color: var(--success); }
+        .toast.error .toast-icon { color: var(--danger); }
+        .toast.warning .toast-icon { color: var(--warning); }
+
+        .toast-content h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: 0.9375rem;
+        }
+
+        .toast-content p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            margin-left: auto;
+            padding: var(--space-xs);
+        }
+
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-100) 25%, var(--light) 50%, var(--gray-100) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: var(--radius-md);
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .report-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .quick-actions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 72px);
+                background: var(--dark);
+                flex-direction: column;
+                padding: var(--space-xl);
+                transition: left var(--transition-base);
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: var(--space-md);
+                font-size: 1.125rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: none;
+            }
+
+            .form-row,
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .quick-actions, footer, .hero-visual {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
+            section {
+                padding: 2rem 0;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary: #FF4500;
+                --dark: #000000;
+                --gray-500: #333333;
+            }
+
+            .btn:focus-visible,
+            a:focus-visible {
+                outline: 3px solid var(--primary);
+                outline-offset: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer" role="region" aria-live="polite" aria-label="Notifications"></div>
+
+    <!-- Header -->
+    <header id="header" role="banner">
+        <div class="container">
+            <nav role="navigation" aria-label="Main navigation">
+                <a href="#" class="logo" aria-label="SpikeSafe Lanka Home">
+                    <div class="logo-icon" aria-hidden="true">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>SpikeSafe<span>Lanka</span></h1>
+                        <small>Drink Spiking Prevention</small>
+                    </div>
+                </a>
+
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="#home" class="active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#resources" role="menuitem">Resources</a></li>
+                    <li role="none"><a href="#research" role="menuitem">Research</a></li>
+                    <li role="none"><a href="#report" role="menuitem" class="highlight">Report Incident</a></li>
+                    <li role="none"><a href="#about" role="menuitem">About</a></li>
+                    <li role="none"><a href="admin.html" class="btn btn-primary" role="menuitem">Admin</a></li>
+                </ul>
+
+                <div class="language-selector">
+                    <button class="language-btn" id="languageBtn" aria-expanded="false" aria-haspopup="true" aria-label="Select language">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown" role="menu" aria-label="Language options">
+                        <button class="active" data-lang="en" role="menuitem">🇬🇧 English</button>
+                        <button data-lang="si" role="menuitem">🇱🇰 සිංහල</button>
+                        <button data-lang="ta" role="menuitem">🇱🇰 தமிழ்</button>
+                    </div>
+                </div>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sri Lanka Focus</span>
+                        </div>
+                        <h2 id="hero-title">Protecting Our Community Against <span>Drink Spiking</span></h2>
+                        <p class="hero-description">
+                            Sri Lanka's first comprehensive platform for drink spiking awareness, prevention, and anonymous reporting. Access verified resources, research, and emergency support.
+                        </p>
+                        
+                        <div class="hero-stats" role="region" aria-label="Key statistics">
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" id="statResources">45+</span>
+                                <span class="hero-stat-label">Local Resources</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" id="statReports">24/7</span>
+                                <span class="hero-stat-label">Support Available</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" id="statCoverage">9</span>
+                                <span class="hero-stat-label">Provinces Covered</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a href="#report" class="btn btn-primary btn-lg">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Report Incident
+                            </a>
+                            <a href="#resources" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-book-open"></i>
+                                View Resources
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="sri-lanka-map-container">
+                            <div class="map-bg"></div>
+                            <div class="sri-lanka-outline">🇱🇰</div>
+                            
+                            <div class="location-marker colombo">
+                                <div class="marker-pulse"></div>
+                                <div class="marker-label">Colombo</div>
+                            </div>
+                            <div class="location-marker kandy">
+                                <div class="marker-pulse"></div>
+                                <div class="marker-label">Kandy</div>
+                            </div>
+                            <div class="location-marker galle">
+                                <div class="marker-pulse"></div>
+                                <div class="marker-label">Galle</div>
+                            </div>
+                            <div class="location-marker jaffna">
+                                <div class="marker-pulse"></div>
+                                <div class="marker-label">Jaffna</div>
+                            </div>
+
+                            <div class="emergency-card">
+                                <div class="emergency-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="emergency-info">
+                                    <h3>Emergency Hotline</h3>
+                                    <span class="emergency-number">0112-345-678</span>
+                                    <small>24/7 Confidential Support</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="container">
+                <div class="quick-actions-grid">
+                    <a href="#resources" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="quick-action-text">
+                            <h4>Safety Tips</h4>
+                            <p>Learn prevention strategies</p>
+                        </div>
+                    </a>
+                    <a href="#report" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="quick-action-text">
+                            <h4>Report Now</h4>
+                            <p>Anonymous incident reporting</p>
+                        </div>
+                    </a>
+                    <a href="#research" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="quick-action-text">
+                            <h4>Research Data</h4>
+                            <p>Access local studies</p>
+                        </div>
+                    </a>
+                    <a href="#about" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="quick-action-text">
+                            <h4>Get Involved</h4>
+                            <p>Join our awareness campaigns</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section" aria-labelledby="resources-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">
+                        <i class="fas fa-database"></i>
+                        Resource Library
+                    </span>
+                    <h2 id="resources-title" class="section-title">Sri Lankan Awareness Resources</h2>
+                    <p class="section-subtitle">
+                        Curated collection of local news, campaigns, guides, and educational materials focused on drink spiking prevention in Sri Lanka.
+                    </p>
+                </div>
+
+                <div class="resources-toolbar">
+                    <div class="search-box">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input 
+                            type="search" 
+                            id="resourceSearch" 
+                            placeholder="Search resources by title, source, or keyword..."
+                            aria-label="Search resources"
+                        >
+                    </div>
+                    <div class="filter-group" role="group" aria-label="Filter resources by type">
+                        <button class="filter-chip active" data-filter="all">All</button>
+                        <button class="filter-chip" data-filter="news">News</button>
+                        <button class="filter-chip" data-filter="campaign">Campaigns</button>
+                        <button class="filter-chip" data-filter="video">Videos</button>
+                        <button class="filter-chip" data-filter="guide">Guides</button>
+                        <button class="filter-chip" data-filter="srilanka">🇱🇰 Sri Lanka</button>
+                    </div>
+                </div>
+
+                <div class="resources-grid" id="resourcesGrid" role="region" aria-label="Resource cards">
+                    <!-- Resources loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="research-section" aria-labelledby="research-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">
+                        <i class="fas fa-graduation-cap"></i>
+                        Research Database
+                    </span>
+                    <h2 id="research-title" class="section-title">Academic Research & Studies</h2>
+                    <p class="section-subtitle">
+                        Peer-reviewed research, local studies, and credible reports on drink spiking in the Sri Lankan context.
+                    </p>
+                </div>
+
+                <div class="resources-toolbar">
+                    <div class="search-box">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input 
+                            type="search" 
+                            id="researchSearch" 
+                            placeholder="Search by title, author, or keyword..."
+                            aria-label="Search research papers"
+                        >
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-chip" id="yearFilter" aria-label="Filter by year">
+                            <option value="">All Years</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                        <select class="filter-chip" id="typeFilter" aria-label="Filter by type">
+                            <option value="">All Types</option>
+                            <option value="journal">Journal Article</option>
+                            <option value="report">Report</option>
+                            <option value="thesis">Thesis</option>
+                            <option value="local">Local Study</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="research-table-container">
+                    <table class="research-table" role="table" aria-label="Research papers database">
+                        <thead>
+                            <tr role="row">
+                                <th scope="col">Title & Authors</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Keywords</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="researchTableBody" role="rowgroup">
+                            <!-- Research loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Report Section -->
+        <section id="report" class="report-section" aria-labelledby="report-title">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Confidential Reporting
+                    </span>
+                    <h2 id="report-title" class="section-title">Report an Incident</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">
+                        Your safety matters. Report drink spiking incidents anonymously to help us track hotspots and improve prevention efforts across Sri Lanka.
+                    </p>
+                </div>
+
+                <div class="report-grid">
+                    <div class="report-form-wrapper">
+                        <form id="incidentForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="incidentDate">
+                                        Date of Incident <span class="required" aria-label="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="date" 
+                                        id="incidentDate" 
+                                        class="form-control" 
+                                        required
+                                        max=""
+                                        aria-required="true"
+                                    >
+                                    <span class="error-message" id="dateError" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incidentTime">Approximate Time</label>
+                                    <input 
+                                        type="time" 
+                                        id="incidentTime" 
+                                        class="form-control"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="incidentLocation">
+                                    Location (District) <span class="required" aria-label="required">*</span>
+                                </label>
+                                <select id="incidentLocation" class="form-control" required aria-required="true">
+                                    <option value="">Select district</option>
+                                    <option value="colombo">Colombo</option>
+                                    <option value="gampaha">Gampaha</option>
+                                    <option value="kalutara">Kalutara</option>
+                                    <option value="kandy">Kandy</option>
+                                    <option value="matale">Matale</option>
+                                    <option value="nuwara-eliya">Nuwara Eliya</option>
+                                    <option value="galle">Galle</option>
+                                    <option value="matara">Matara</option>
+                                    <option value="hambantota">Hambantota</option>
+                                    <option value="jaffna">Jaffna</option>
+                                    <option value="kilinochchi">Kilinochchi</option>
+                                    <option value="mannar">Mannar</option>
+                                    <option value="vavuniya">Vavuniya</option>
+                                    <option value="mullaitivu">Mullaitivu</option>
+                                    <option value="batticaloa">Batticaloa</option>
+                                    <option value="ampara">Ampara</option>
+                                    <option value="trincomalee">Trincomalee</option>
+                                    <option value="kurunegala">Kurunegala</option>
+                                    <option value="puttalam">Puttalam</option>
+                                    <option value="anuradhapura">Anuradhapura</option>
+                                    <option value="polonnaruwa">Polonnaruwa</option>
+                                    <option value="badulla">Badulla</option>
+                                    <option value="monaragala">Monaragala</option>
+                                    <option value="ratnapura">Ratnapura</option>
+                                    <option value="kegalle">Kegalle</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="locationType">
+                                    Type of Location <span class="required" aria-label="required">*</span>
+                                </label>
+                                <select id="locationType" class="form-control" required aria-required="true">
+                                    <option value="">Select location type</option>
+                                    <option value="bar">Bar / Nightclub</option>
+                                    <option value="restaurant">Restaurant</option>
+                                    <option value="hotel">Hotel / Resort</option>
+                                    <option value="private-party">Private Party</option>
+                                    <option value="university">University / School Event</option>
+                                    <option value="festival">Festival / Public Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Actions Taken (Select all that apply)</label>
+                                <div class="checkbox-group" role="group" aria-label="Actions taken">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="actions" value="police">
+                                        <span>Reported to Police</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="actions" value="hospital">
+                                        <span>Visited Hospital</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="actions" value="support">
+                                        <span>Sought Support Services</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="actions" value="none">
+                                        <span>No Action Taken</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="incidentDescription">Additional Details (Optional)</label>
+                                <textarea 
+                                    id="incidentDescription" 
+                                    class="form-control" 
+                                    rows="4" 
+                                    placeholder="Please provide any additional information that may help us understand the situation better..."
+                                    maxlength="1000"
+                                ></textarea>
+                                <small style="color: var(--gray-500); display: block; margin-top: var(--space-xs);">
+                                    Maximum 1000 characters. Do not include personal identifying information.
+                                </small>
+                            </div>
+
+                            <div class="form-group" style="margin-top: var(--space-xl);">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Submit Anonymous Report
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="privacy-card">
+                            <h3>
+                                <i class="fas fa-lock"></i>
+                                Your Privacy is Protected
+                            </h3>
+                            <p>
+                                We do not collect any personal information. All reports are completely anonymous and stored securely. Your data helps us identify patterns and improve safety measures across Sri Lanka.
+                            </p>
+                        </div>
+
+                        <div class="emergency-contacts" role="region" aria-label="Emergency contacts">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>Police Emergency</h4>
+                                    <p>119</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>National Hospital</h4>
+                                    <p>011-2691111</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-female"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>Women's Helpline</h4>
+                                    <p>1938</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-ambulance"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h4>Ambulance</h4>
+                                    <p>1990</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-tag">
+                            <i class="fas fa-info-circle"></i>
+                            About Us
+                        </span>
+                        <h2 id="about-title">Dedicated to Safer Communities Across Sri Lanka</h2>
+                        <p>
+                            SpikeSafe Lanka is a non-profit initiative committed to combating drink spiking through education, research, and community engagement. We work closely with local authorities, healthcare providers, and educational institutions to create safer environments for everyone.
+                        </p>
+
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <div>
+                                    <h4>Comprehensive Database</h4>
+                                    <p>Access verified resources and research specific to Sri Lankan context</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <div>
+                                    <h4>Anonymous Reporting</h4>
+                                    <p>Secure, confidential incident reporting with no personal data collection</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <div>
+                                    <h4>Community Support</h4>
+                                    <p>Connecting victims with local support services and counseling</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <div>
+                                    <h4>Prevention Education</h4>
+                                    <p>Workshops and materials for venues, universities, and organizations</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <a href="#resources" class="btn btn-primary btn-lg">
+                            Explore Our Resources
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="stats-grid" role="region" aria-label="Organization statistics">
+                        <div class="stat-card-large">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-file-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="stat-number" id="statTotalResources">165+</div>
+                            <div class="stat-label">Total Resources</div>
+                        </div>
+                        <div class="stat-card-large">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </div>
+                            <div class="stat-number" id="statMonthlyUsers">25K+</div>
+                            <div class="stat-label">Monthly Visitors</div>
+                        </div>
+                        <div class="stat-card-large">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-university" aria-hidden="true"></i>
+                            </div>
+                            <div class="stat-number" id="statPartners">15+</div>
+                            <div class="stat-label">Partner Institutions</div>
+                        </div>
+                        <div class="stat-card-large">
+                            <div class="stat-icon-large">
+                                <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="stat-number" id="statCoverageArea">100%</div>
+                            <div class="stat-label">District Coverage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        SpikeSafe Lanka
+                    </h3>
+                    <p>
+                        Sri Lanka's premier drink spiking awareness and prevention platform. Working together for safer communities.
+                    </p>
+                    <div class="social-links" aria-label="Social media links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#report">Report Incident</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Safety Tips</a></li>
+                        <li><a href="#">Prevention Guide</a></li>
+                        <li><a href="#">Support Services</a></li>
+                        <li><a href="#">Legal Information</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        info@spikesafelanka.lk
+                    </p>
+                    <p>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        0112-345-678
+                    </p>
+                    <p>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        Colombo, Sri Lanka
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 SpikeSafe Lanka. All rights reserved. | <a href="#" style="color: var(--primary);">Privacy Policy</a> | <a href="#" style="color: var(--primary);">Terms of Service</a></p>
+                <div class="footer-partners">
+                    <span class="partner-badge">Sri Lanka Police</span>
+                    <span class="partner-badge">Ministry of Health</span>
+                    <span class="partner-badge">University of Colombo</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resource Detail Modal -->
+    <div class="modal" id="resourceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="modal-title">Resource Details</h3>
+                <button class="modal-close" id="modalClose" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modalCloseBtn">Close</button>
+                <a href="#" class="btn btn-primary" id="modalActionBtn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit Source
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Professional JavaScript with error handling, accessibility, and performance optimizations
+
+        'use strict';
+
+        // Application State
+        const AppState = {
+            currentLanguage: 'en',
+            resources: [],
+            research: [],
+            filters: {
+                resources: 'all',
+                researchYear: '',
+                researchType: ''
+            },
+            searchQueries: {
+                resources: '',
+                research: ''
+            }
+        };
+
+        // Translations
+        const Translations = {
+            en: {
+                title: 'SpikeSafe Lanka | Drink Spiking Prevention & Awareness',
+                nav: {
+                    home: 'Home',
+                    resources: 'Resources',
+                    research: 'Research',
+                    report: 'Report Incident',
+                    about: 'About',
+                    admin: 'Admin'
+                },
+                hero: {
+                    badge: 'Sri Lanka Focus',
+                    title: 'Protecting Our Community Against Drink Spiking',
+                    description: 'Sri Lanka\'s first comprehensive platform for drink spiking awareness, prevention, and anonymous reporting.',
+                    stats: {
+                        resources: 'Local Resources',
+                        support: 'Support Available',
+                        coverage: 'Provinces Covered'
+                    }
+                },
+                buttons: {
+                    report: 'Report Incident',
+                    resources: 'View Resources',
+                    explore: 'Explore Our Resources'
+                }
+            },
+            si: {
+                title: 'SpikeSafe ලංකා | පානයට මත්ද්‍රව්‍ය මිශ්‍ර කිරීම් වලක්වා ගැනීම',
+                nav: {
+                    home: 'මුල් පිටුව',
+                    resources: 'සම්පත්',
+                    research: 'පර්යේෂණ',
+                    report: 'සිදුවීම් වාර්තා කරන්න',
+                    about: 'අපි ගැන',
+                    admin: 'පරිපාලක'
+                },
+                hero: {
+                    badge: 'ශ්‍රී ලංකා මධ්‍යස්ථය',
+                    title: 'පානයට මත්ද්‍රව්‍ය මිශ්‍ර කිරීම් වලින් අපගේ ප්‍රජාව ආරක්ෂා කිරීම',
+                    description: 'පානයට මත්ද්‍රව්‍ය මිශ්‍ර කිරීම් පිළිබඳ දැනුවත්භාවය, වැළැක්වීම සහ නිර්නාමික වාර්තා කිරීම සඳහා ශ්‍රී ලංකාවේ පළමු සම්පූර්ණ වේදිකාව.',
+                    stats: {
+                        resources: 'දේශීය සම්පත්',
+                        support: 'සහාය ලබා ගත හැක',
+                        coverage: 'පළාත් ආවරණය'
+                    }
+                },
+                buttons: {
+                    report: 'සිදුවීම් වාර්තා කරන්න',
+                    resources: 'සම්පත් බලන්න',
+                    explore: 'අපගේ සම්පත් ගවේෂණය කරන්න'
+                }
+            },
+            ta: {
+                title: 'SpikeSafe இலங்கை | பானத்தில் மருந்து கலப்பதைத் தடுப்பது',
+                nav: {
+                    home: 'முகப்பு',
+                    resources: 'வளங்கள்',
+                    research: 'ஆராய்ச்சி',
+                    report: 'சம்பவத்தைப் புகாரளிக்கவும்',
+                    about: 'எங்களைப் பற்றி',
+                    admin: 'நிர்வாகி'
+                },
+                hero: {
+                    badge: 'இலங்கை மையம்',
+                    title: 'பானத்தில் மருந்து கலப்பதிலிருந்து எங்கள் சமூகத்தைப் பாதுகாத்தல்',
+                    description: 'பானத்தில் மருந்து கலப்பது பற்றிய விழிப்புணர்வு, தடுப்பு மற்றும் அநாமதேய புகாரளிப்புக்கான இலங்கையின் முதல் விரிவான தளம்.',
+                    stats: {
+                        resources: 'உள்ளூர் வளங்கள்',
+                        support: 'ஆதரவு கிடைக்கும்',
+                        coverage: 'மாகாண பரவல்'
+                    }
+                },
+                buttons: {
+                    report: 'சம்பவத்தைப் புகாரளிக்கவும்',
+                    resources: 'வளங்களைக் காண்க',
+                    explore: 'எங்கள் வளங்களை ஆராயுங்கள்'
+                }
+            }
+        };
+
+        // Data
+        const ResourcesData = [
+            {
+                id: 1,
+                title: 'Sri Lanka Police Anti-Spiking Campaign 2024',
+                description: 'National campaign by Sri Lanka Police focusing on prevention and reporting procedures for drink spiking incidents across the island.',
+                type: 'campaign',
+                source: 'Sri Lanka Police Department',
+                date: '2024-03-15',
+                url: '#',
+                category: ['prevention', 'police', 'srilanka', 'campaign'],
+                location: 'Nationwide',
+                views: 2458
+            },
+            {
+                id: 2,
+                title: 'Daily Mirror: Rising Spiking Cases in Colombo Nightlife',
+                description: 'Investigative report on the increasing number of reported drink spiking incidents in Colombo\'s popular nightlife areas.',
+                type: 'news',
+                source: 'Daily Mirror Sri Lanka',
+                date: '2024-02-28',
+                url: '#',
+                category: ['news', 'colombo', 'statistics', 'srilanka', 'nightlife'],
+                location: 'Colombo',
+                views: 1892
+            },
+            {
+                id: 3,
+                title: 'Tourist Safety Guide: Sri Lanka 2024',
+                description: 'Comprehensive safety guide for tourists visiting Sri Lanka, covering prevention, symptoms, and immediate actions.',
+                type: 'guide',
+                source: 'Sri Lanka Tourism Authority',
+                date: '2024-01-10',
+                url: '#',
+                category: ['safety', 'tourists', 'guide', 'srilanka', 'prevention'],
+                location: 'Nationwide',
+                views: 1567
+            },
+            {
+                id: 4,
+                title: 'University of Colombo Awareness Documentary',
+                description: 'Documentary featuring local survivors and experts discussing drink spiking in Sri Lankan universities.',
+                type: 'video',
+                source: 'University of Colombo',
+                date: '2023-11-20',
+                url: '#',
+                category: ['video', 'university', 'awareness', 'srilanka', 'education'],
+                location: 'Colombo',
+                views: 1234
+            },
+            {
+                id: 5,
+                title: 'Galle Fort Safety Initiative',
+                description: 'Community-led program implementing safety measures in Galle Fort tourist areas.',
+                type: 'campaign',
+                source: 'Galle Municipal Council',
+                date: '2024-03-01',
+                url: '#',
+                category: ['tourist', 'galle', 'prevention', 'srilanka', 'community'],
+                location: 'Galle',
+                views: 987
+            },
+            {
+                id: 6,
+                title: 'Kandy Nightlife Safety Protocol',
+                description: 'New safety measures implemented by Kandy hospitality association following recent incidents.',
+                type: 'news',
+                source: 'The Island',
+                date: '2024-02-15',
+                url: '#',
+                category: ['news', 'kandy', 'nightlife', 'srilanka', 'prevention'],
+                location: 'Kandy',
+                views: 876
+            }
+        ];
+
+        const ResearchData = [
+            {
+                id: 1,
+                title: 'Epidemiological Study of Drink Spiking in Colombo District (2019-2023)',
+                authors: ['Dr. Nimal Perera', 'Prof. Sunil Fernando'],
+                year: 2023,
+                type: 'journal',
+                keywords: ['epidemiology', 'colombo', 'urban', 'srilanka', 'statistics'],
+                url: '#',
+                institution: 'University of Colombo'
+            },
+            {
+                id: 2,
+                title: 'Cultural Factors Affecting Spiking Reporting in Sri Lankan Society',
+                authors: ['Dr. Anoma Rajakaruna'],
+                year: 2022,
+                type: 'journal',
+                keywords: ['culture', 'reporting', 'social', 'srilanka', 'stigma'],
+                url: '#',
+                institution: 'University of Peradeniya'
+            },
+            {
+                id: 3,
+                title: 'Tourist Victimization: Drink Spiking in Coastal Resorts of Sri Lanka',
+                authors: ['Dr. Samantha Rathnayake', 'Dr. Rohan Silva'],
+                year: 2023,
+                type: 'report',
+                keywords: ['tourists', 'coastal', 'resorts', 'srilanka', 'victimization'],
+                url: '#',
+                institution: 'Sri Lanka Tourism Research Institute'
+            },
+            {
+                id: 4,
+                title: 'Forensic Analysis of Substances Used in Drink Spiking Cases',
+                authors: ['Dr. Priyantha Bandara', 'Prof. Chamari Jayawardena'],
+                year: 2021,
+                type: 'journal',
+                keywords: ['forensics', 'substances', 'toxicology', 'srilanka', 'drugs'],
+                url: '#',
+                institution: 'Government Analyst\'s Department'
+            },
+            {
+                id: 5,
+                title: 'Legal Framework for Spiking Prosecution: Sri Lankan Context',
+                authors: ['Dr. Asoka Jayasundera'],
+                year: 2022,
+                type: 'report',
+                keywords: ['legal', 'prosecution', 'legislation', 'srilanka', 'law'],
+                url: '#',
+                institution: 'Ministry of Justice'
+            }
+        ];
+
+        // Utility Functions
+        const Utils = {
+            formatDate: (dateString) => {
+                if (!dateString) return 'Date not available';
+                try {
+                    const date = new Date(dateString);
+                    if (isNaN(date.getTime())) return dateString;
+                    return date.toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                } catch (error) {
+                    console.error('Date formatting error:', error);
+                    return dateString;
+                }
+            },
+
+            debounce: (func, wait) => {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            sanitizeHTML: (str) => {
+                const temp = document.createElement('div');
+                temp.textContent = str;
+                return temp.innerHTML;
+            },
+
+            generateId: () => {
+                return `id_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            },
+
+            showToast: (message, type = 'info', duration = 5000) => {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.setAttribute('role', 'alert');
+                
+                const icons = {
+                    success: 'check-circle',
+                    error: 'exclamation-circle',
+                    warning: 'exclamation-triangle',
+                    info: 'info-circle'
+                };
+
+                toast.innerHTML = `
+                    <i class="fas fa-${icons[type]} toast-icon"></i>
+                    <div class="toast-content">
+                        <h4>${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
+                        <p>${message}</p>
+                    </div>
+                    <button class="toast-close" aria-label="Close notification">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+
+                container.appendChild(toast);
+
+                const closeBtn = toast.querySelector('.toast-close');
+                closeBtn.addEventListener('click', () => {
+                    toast.remove();
+                });
+
+                setTimeout(() => {
+                    toast.style.animation = 'toastSlideIn 0.3s ease-out reverse';
+                    setTimeout(() => toast.remove(), 300);
+                }, duration);
+            },
+
+            validateForm: (formElement) => {
+                const inputs = formElement.querySelectorAll('input[required], select[required], textarea[required]');
+                let isValid = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = 'var(--danger)';
+                        input.addEventListener('input', () => {
+                            input.style.borderColor = '';
+                        }, { once: true });
+                    }
+                });
+
+                return isValid;
+            }
+        };
+
+        // UI Components
+        const UI = {
+            init: () => {
+                UI.setupNavigation();
+                UI.setupLanguageSelector();
+                UI.setupMobileMenu();
+                UI.setupScrollEffects();
+                UI.setupModal();
+                UI.setupForms();
+                UI.renderResources();
+                UI.renderResearch();
+            },
+
+            setupNavigation: () => {
+                const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        if (href === '#') return;
+                        
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const headerOffset = 100;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // Update active state
+                            navLinks.forEach(l => l.classList.remove('active'));
+                            link.classList.add('active');
+
+                            // Close mobile menu if open
+                            document.getElementById('navLinks').classList.remove('active');
+                        }
+                    });
+                });
+
+                // Update active nav on scroll
+                window.addEventListener('scroll', Utils.debounce(() => {
+                    const sections = document.querySelectorAll('section[id]');
+                    const scrollPos = window.scrollY + 150;
+
+                    sections.forEach(section => {
+                        const top = section.offsetTop;
+                        const bottom = top + section.offsetHeight;
+                        const id = section.getAttribute('id');
+
+                        if (scrollPos >= top && scrollPos < bottom) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href') === `#${id}`) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+
+                    // Header scroll effect
+                    const header = document.getElementById('header');
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                }, 100));
+            },
+
+            setupLanguageSelector: () => {
+                const btn = document.getElementById('languageBtn');
+                const dropdown = document.getElementById('languageDropdown');
+                const buttons = dropdown.querySelectorAll('button');
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !isExpanded);
+                    dropdown.classList.toggle('active');
+                });
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const lang = button.dataset.lang;
+                        UI.switchLanguage(lang);
+                        
+                        buttons.forEach(b => b.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        document.getElementById('currentLang').textContent = button.textContent.split(' ')[1];
+                        dropdown.classList.remove('active');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            },
+
+            switchLanguage: (lang) => {
+                AppState.currentLanguage = lang;
+                const t = Translations[lang];
+                
+                if (!t) return;
+
+                // Update document title
+                document.title = t.title;
+
+                // Update navigation
+                const navLinks = document.querySelectorAll('.nav-links a');
+                const navKeys = ['home', 'resources', 'research', 'report', 'about', 'admin'];
+                navLinks.forEach((link, index) => {
+                    if (navKeys[index] && t.nav[navKeys[index]]) {
+                        link.textContent = t.nav[navKeys[index]];
+                    }
+                });
+
+                // Update hero section
+                document.querySelector('.hero-badge').textContent = t.hero.badge;
+                document.querySelector('.hero-description').textContent = t.hero.description;
+                
+                // Update stats labels
+                const statLabels = document.querySelectorAll('.hero-stat-label');
+                statLabels[0].textContent = t.hero.stats.resources;
+                statLabels[1].textContent = t.hero.stats.support;
+                statLabels[2].textContent = t.hero.stats.coverage;
+
+                // Update buttons
+                const heroButtons = document.querySelectorAll('.hero-actions .btn');
+                if (heroButtons[0]) heroButtons[0].innerHTML = `<i class="fas fa-exclamation-circle"></i> ${t.buttons.report}`;
+                if (heroButtons[1]) heroButtons[1].innerHTML = `<i class="fas fa-book-open"></i> ${t.buttons.resources}`;
+
+                // Store preference
+                localStorage.setItem('preferredLanguage', lang);
+                
+                Utils.showToast(`Language switched to ${lang === 'en' ? 'English' : lang === 'si' ? 'Sinhala' : 'Tamil'}`, 'success');
+            },
+
+            setupMobileMenu: () => {
+                const toggle = document.getElementById('mobileMenuToggle');
+                const nav = document.getElementById('navLinks');
+
+                toggle.addEventListener('click', () => {
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', !isExpanded);
+                    nav.classList.toggle('active');
+                    
+                    const icon = toggle.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            },
+
+            setupScrollEffects: () => {
+                // Intersection Observer for fade-in animations
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.resource-card, .stat-card-large').forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                });
+            },
+
+            setupModal: () => {
+                const modal = document.getElementById('resourceModal');
+                const closeBtn = document.getElementById('modalClose');
+                const closeBtnFooter = document.getElementById('modalCloseBtn');
+
+                const closeModal = () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+
+                closeBtn.addEventListener('click', closeModal);
+                closeBtnFooter.addEventListener('click', closeModal);
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        closeModal();
+                    }
+                });
+            },
+
+            openModal: (content, actionUrl = '#') => {
+                const modal = document.getElementById('resourceModal');
+                const modalBody = document.getElementById('modalBody');
+                const actionBtn = document.getElementById('modalActionBtn');
+
+                modalBody.innerHTML = content;
+                actionBtn.href = actionUrl;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management for accessibility
+                const closeBtn = document.getElementById('modalClose');
+                closeBtn.focus();
+            },
+
+            setupForms: () => {
+                // Report form
+                const reportForm = document.getElementById('incidentForm');
+                const dateInput = document.getElementById('incidentDate');
+                
+                // Set max date to today
+                dateInput.max = new Date().toISOString().split('T')[0];
+
+                reportForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    if (!Utils.validateForm(reportForm)) {
+                        Utils.showToast('Please fill in all required fields', 'error');
+                        return;
+                    }
+
+                    const formData = {
+                        id: Utils.generateId(),
+                        date: document.getElementById('incidentDate').value,
+                        time: document.getElementById('incidentTime').value,
+                        location: document.getElementById('incidentLocation').value,
+                        locationType: document.getElementById('locationType').value,
+                        actions: Array.from(document.querySelectorAll('input[name="actions"]:checked')).map(cb => cb.value),
+                        description: document.getElementById('incidentDescription').value,
+                        submittedAt: new Date().toISOString()
+                    };
+
+                    // Simulate API call
+                    UI.submitReport(formData);
+                });
+
+                // Resource search
+                const resourceSearch = document.getElementById('resourceSearch');
+                resourceSearch.addEventListener('input', Utils.debounce((e) => {
+                    AppState.searchQueries.resources = e.target.value;
+                    UI.renderResources();
+                }, 300));
+
+                // Research search
+                const researchSearch = document.getElementById('researchSearch');
+                researchSearch.addEventListener('input', Utils.debounce((e) => {
+                    AppState.searchQueries.research = e.target.value;
+                    UI.renderResearch();
+                }, 300));
+
+                // Filter chips
+                document.querySelectorAll('.filter-chip[data-filter]').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        document.querySelectorAll('.filter-chip[data-filter]').forEach(c => c.classList.remove('active'));
+                        chip.classList.add('active');
+                        AppState.filters.resources = chip.dataset.filter;
+                        UI.renderResources();
+                    });
+                });
+
+                // Research filters
+                document.getElementById('yearFilter').addEventListener('change', (e) => {
+                    AppState.filters.researchYear = e.target.value;
+                    UI.renderResearch();
+                });
+
+                document.getElementById('typeFilter').addEventListener('change', (e) => {
+                    AppState.filters.researchType = e.target.value;
+                    UI.renderResearch();
+                });
+            },
+
+            submitReport: (data) => {
+                // Simulate submission
+                const btn = document.querySelector('#incidentForm button[type="submit"]');
+                const originalText = btn.innerHTML;
+                
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+                setTimeout(() => {
+                    // Store in localStorage for demo
+                    const reports = JSON.parse(localStorage.getItem('spikingReports') || '[]');
+                    reports.push(data);
+                    localStorage.setItem('spikingReports', JSON.stringify(reports));
+
+                    Utils.showToast('Report submitted successfully. Thank you for helping keep our community safe.', 'success');
+                    
+                    document.getElementById('incidentForm').reset();
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }, 1500);
+            },
+
+            renderResources: () => {
+                const grid = document.getElementById('resourcesGrid');
+                const filter = AppState.filters.resources;
+                const search = AppState.searchQueries.resources.toLowerCase();
+
+                let filtered = ResourcesData.filter(resource => {
+                    const matchesFilter = filter === 'all' || 
+                        resource.type === filter || 
+                        (filter === 'srilanka' && resource.category.includes('srilanka'));
+                    
+                    const matchesSearch = !search || 
+                        resource.title.toLowerCase().includes(search) ||
+                        resource.description.toLowerCase().includes(search) ||
+                        resource.source.toLowerCase().includes(search);
+
+                    return matchesFilter && matchesSearch;
+                });
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                            <i class="fas fa-search" style="font-size: 48px; color: var(--gray-300); margin-bottom: 20px;"></i>
+                            <h3 style="color: var(--dark); margin-bottom: 10px;">No resources found</h3>
+                            <p style="color: var(--gray-500);">Try adjusting your search or filter criteria</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = filtered.map(resource => `
+                    <article class="resource-card" data-id="${resource.id}">
+                        <div class="resource-image">
+                            <i class="fas fa-${UI.getIconForType(resource.type)}"></i>
+                            <span class="resource-type-badge">${resource.type}</span>
+                            ${resource.category.includes('srilanka') ? '<span class="resource-srilanka-badge">🇱🇰 Sri Lanka</span>' : ''}
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-meta">
+                                <span><i class="fas fa-building"></i> ${Utils.sanitizeHTML(resource.source)}</span>
+                                <span><i class="fas fa-calendar"></i> ${Utils.formatDate(resource.date)}</span>
+                            </div>
+                            <h3 class="resource-title">${Utils.sanitizeHTML(resource.title)}</h3>
+                            <p class="resource-description">${Utils.sanitizeHTML(resource.description)}</p>
+                            <div class="resource-tags">
+                                ${resource.category.filter(c => c !== 'srilanka').map(cat => 
+                                    `<span class="tag">${cat}</span>`
+                                ).join('')}
+                            </div>
+                            <div class="resource-footer">
+                                <span class="resource-date">
+                                    <i class="fas fa-eye"></i> ${resource.views} views
+                                </span>
+                                <button class="btn btn-primary btn-sm view-resource" data-id="${resource.id}">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+
+                // Add click handlers
+                grid.querySelectorAll('.view-resource').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = parseInt(btn.dataset.id);
+                        const resource = ResourcesData.find(r => r.id === id);
+                        if (resource) {
+                            UI.showResourceModal(resource);
+                        }
+                    });
+                });
+            },
+
+            renderResearch: () => {
+                const tbody = document.getElementById('researchTableBody');
+                const yearFilter = AppState.filters.researchYear;
+                const typeFilter = AppState.filters.researchType;
+                const search = AppState.searchQueries.research.toLowerCase();
+
+                let filtered = ResearchData.filter(paper => {
+                    const matchesYear = !yearFilter || paper.year.toString() === yearFilter;
+                    const matchesType = !typeFilter || paper.type === typeFilter;
+                    const matchesSearch = !search ||
+                        paper.title.toLowerCase().includes(search) ||
+                        paper.authors.some(a => a.toLowerCase().includes(search)) ||
+                        paper.keywords.some(k => k.toLowerCase().includes(search));
+
+                    return matchesYear && matchesType && matchesSearch;
+                });
+
+                if (filtered.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 40px;">
+                                <i class="fas fa-search" style="font-size: 36px; color: var(--gray-300); margin-bottom: 15px; display: block;"></i>
+                                <p style="color: var(--gray-500);">No research papers found matching your criteria</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                tbody.innerHTML = filtered.map(paper => `
+                    <tr>
+                        <td>
+                            <div class="paper-title">${Utils.sanitizeHTML(paper.title)}</div>
+                            <div class="paper-authors">${paper.authors.join(', ')}</div>
+                        </td>
+                        <td>${paper.year}</td>
+                        <td><span class="type-badge type-${paper.type}">${paper.type}</span></td>
+                        <td>
+                            ${paper.keywords.map(kw => `<span class="keyword-tag">${kw}</span>`).join('')}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm view-research" data-id="${paper.id}">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+
+                // Add click handlers
+                tbody.querySelectorAll('.view-research').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = parseInt(btn.dataset.id);
+                        const paper = ResearchData.find(p => p.id === id);
+                        if (paper) {
+                            UI.showResearchModal(paper);
+                        }
+                    });
+                });
+            },
+
+            showResourceModal: (resource) => {
+                const content = `
+                    <div style="margin-bottom: 24px;">
+                        <span class="type-badge type-${resource.type}" style="margin-bottom: 16px; display: inline-block;">${resource.type}</span>
+                        <h2 style="margin-bottom: 16px; color: var(--dark);">${Utils.sanitizeHTML(resource.title)}</h2>
+                        <div style="display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; color: var(--gray-500); font-size: 14px;">
+                            <span><i class="fas fa-building"></i> ${Utils.sanitizeHTML(resource.source)}</span>
+                            <span><i class="fas fa-calendar"></i> ${Utils.formatDate(resource.date)}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${resource.location}</span>
+                            <span><i class="fas fa-eye"></i> ${resource.views} views</span>
+                        </div>
+                        <p style="color: var(--gray-500); line-height: 1.7; margin-bottom: 24px;">${Utils.sanitizeHTML(resource.description)}</p>
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="margin-bottom: 12px; color: var(--dark);">Categories</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                ${resource.category.map(cat => `<span class="tag">${cat}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                UI.openModal(content, resource.url);
+            },
+
+            showResearchModal: (paper) => {
+                const content = `
+                    <div style="margin-bottom: 24px;">
+                        <span class="type-badge type-${paper.type}" style="margin-bottom: 16px; display: inline-block;">${paper.type}</span>
+                        <h2 style="margin-bottom: 16px; color: var(--dark);">${Utils.sanitizeHTML(paper.title)}</h2>
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="margin-bottom: 8px; color: var(--dark);">Authors</h4>
+                            <p style="color: var(--gray-500);">${paper.authors.join(', ')}</p>
+                        </div>
+                        <div style="display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; color: var(--gray-500); font-size: 14px;">
+                            <span><i class="fas fa-calendar"></i> ${paper.year}</span>
+                            <span><i class="fas fa-university"></i> ${Utils.sanitizeHTML(paper.institution)}</span>
+                        </div>
+                        <div style="margin-bottom: 24px;">
+                            <h4 style="margin-bottom: 12px; color: var(--dark);">Keywords</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                ${paper.keywords.map(kw => `<span class="keyword-tag">${kw}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                UI.openModal(content, paper.url);
+            },
+
+            getIconForType: (type) => {
+                const icons = {
+                    news: 'newspaper',
+                    campaign: 'bullhorn',
+                    video: 'video',
+                    guide: 'book',
+                    report: 'file-alt'
+                };
+                return icons[type] || 'file';
+            }
+        };
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', UI.init);
+        } else {
+            UI.init();
+        }
+
+        // Service Worker registration for PWA capabilities (optional enhancement)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Uncomment to enable PWA capabilities
+                // navigator.serviceWorker.register('/sw.js');
+            });
+        }
+
+        // Expose utilities globally for debugging
+        window.SpikeSafe = {
+            Utils,
+            AppState,
+            UI
+        };
+    </script>
+</body>
+</html>
